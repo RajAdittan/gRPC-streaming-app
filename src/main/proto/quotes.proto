@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.stream.forex";
+option java_outer_classname = "QuotosProto";
+option objc_class_prefix = "HLWS";
+
+package io.stream.forex;
+
+service StreamingQuote {
+    rpc snapQuote(stream QuoteRequest) returns (stream QuoteResponse);
+}
+
+message QuoteRequest {
+    string symbol = 1;
+}
+
+message QuoteResponse {
+    string symbol = 1;
+    double price  = 2;
+}
